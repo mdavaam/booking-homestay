@@ -14,7 +14,7 @@ class Pesananku extends Model
 
 public function kamar()
 {
-    return $this->belongsTo(kamar::class, 'id');
+    return $this->belongsTo(Kamar::class, 'id');
 }
 
 }
