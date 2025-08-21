@@ -9,7 +9,7 @@ use App\Http\Middleware\Admin;
 
 Route::middleware([Admin::class])->group(function (): void {
     Route::get('/admin-dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-    Route::get('/admin-order', [OrdersController::class, 'orders'])->name('admin.order');
+    Route::get('/admin-order', [OrdersController::class, 'index'])->name('admin.order');
     Route::post('/admin-orders/{id}/accept', [OrdersController::class, 'accept'])->name('orders.accept');
     Route::get('/admin-tipekamar', [JenisKamarController::class, 'index'])->name('admin.tipekamar');
     Route::post('/admin-tipekamar', [JenisKamarController::class, 'store'])->name('admin.jeniskamar');

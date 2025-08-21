@@ -19,6 +19,6 @@ class foto extends Model
 {
     public function kamarDalam()
     {
-        return $this->belongsTo(kamar::class, 'kamar_id');
+        return $this->belongsTo(Kamar::class, 'kamar_id');
     }
 }

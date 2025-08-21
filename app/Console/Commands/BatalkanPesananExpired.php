@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Models\transaksi;
+use App\Models\Transaksi;
 use App\Models\kamar;
 use App\Services\BrevoMailService;
 
@@ -45,4 +45,3 @@ class BatalkanPesananExpired extends Command
 }
 
 }
-
