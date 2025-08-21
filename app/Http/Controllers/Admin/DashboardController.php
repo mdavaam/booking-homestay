@@ -16,22 +16,22 @@ class DashboardController extends Controller
    $search = trim((string) $request->input('search', ''));
 
         $kamarTersedia = Kamar::where('status', 'tersedia')->count();
-        $totalOrder    = Transaksi::success()->count();
+        $totalOrder    = Transaksi::where('status', 'success')->count();
 
         $transactions = Transaksi::with('user')
-            ->success()
+            ->where('status', 'success')
             ->when($search !== '', fn($q) => $q->searchUserName($search))
             ->latest('created_at')
             ->paginate(15)
             ->withQueryString();
 
-        return view('admin.dashboard.index', compact('transactions','kamarTersedia','totalOrder'));
+        return view('admin.admin-dashboard', compact('transactions','kamarTersedia', 'totalOrder'));
 
     }
 
     public function laporan(Request $request)
 {
-    $transactions = transaksi::query();
+    $transactions = Transaksi::query();
 
     if ($request->filled('daterange')) {
         $dates = preg_split('/( - | to )/', $request->input('daterange'));
