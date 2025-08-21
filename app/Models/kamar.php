@@ -26,13 +26,8 @@ public function photoKamar()
 }
 public function filter()
 {
-    return $this->hasMany(transaksi::class, 'id_kamar');
+    return $this->hasMany(Transaksi::class, 'id_kamar');
 }
 
 
 }
-
-
-
-
-
