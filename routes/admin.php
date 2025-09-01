@@ -20,7 +20,7 @@ Route::middleware([Admin::class])->group(function (): void {
     Route::post('/admin-kamar/addPhoto/{nama_kamar}', [KamarController::class, 'addPhoto'])->name('admin.addPhoto');
     Route::put('/admin-kamar/update/{id}', [KamarController::class, 'update'])->name('admin.kamar.update');
     Route::delete('/admin-kamar/delete/{id}', [KamarController::class, 'destroy'])->name('admin.kamardalam.destroy');
-    Route::get('/detail.transaksi/{id}', [OrdersController::class, 'detailTransaksi'])->name('detail.transaksi');
+    Route::get('/admin-detail-transaksi/{id}/detail', [OrdersController::class, 'detail'])->name('detail.transaksi');
     Route::get('/laporan-transaksi', [OrdersController::class, 'laporan'])->name('laporan.transaksi');
     Route::get('/admin-pemesanan', [PemesananController::class, 'create'])->name('admin.pemesanan');
     Route::post('/admin-transaksi-store', [PemesananController::class, 'store'])->name('admin.transaksi.store');
