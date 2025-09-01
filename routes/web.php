@@ -3,7 +3,7 @@
 use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\GoogleAuth\MediaSosialController;
-use App\Http\Controllers\User\PemesananKamarController;
+use App\Http\Controllers\Booking\PemesananKamarController;
 use App\Http\Controllers\User\HalamanUserController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Support\Facades\Route;
