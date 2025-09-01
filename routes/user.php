@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\User\HalamanUserController;
-use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\Booking\PembayaranController;
 use App\Http\Controllers\User\RiwayatPemesananController;
 use App\Http\Controllers\Booking\TransaksiController;
 use App\Http\Middleware\User;
