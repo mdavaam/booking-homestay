@@ -7,6 +7,7 @@ use App\Models\Kamar;
 use App\Models\TipeKamar;
 use App\Models\Transaksi;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Midtrans\Snap;
@@ -150,6 +151,31 @@ class PemesananController extends Controller
     return redirect()->back()->with('success', 'Pesanan berhasil dibatalkan.');
 }
 
+public function laporan(Request $request)
+{
+    $transactions = Transaksi::query();
+
+    if ($request->filled('daterange')) {
+        $dates = preg_split('/( - | to )/', $request->input('daterange'));
+
+        if (count($dates) === 2) {
+            try {
+                $startDate = Carbon::createFromFormat('d-m-Y', trim($dates[0]))->startOfDay();
+                $endDate = Carbon::createFromFormat('d-m-Y', trim($dates[1]))->endOfDay();
+
+                $transactions->whereBetween('created_at', [$startDate, $endDate]);
+            } catch (\Exception $e) {
+            }
+        }
+    } elseif ($request->filled('filter')) {
+        $days = (int) $request->input('filter', 7);
+        $transactions->where('created_at', '>=', now()->subDays($days));
+    }
+
+    $transactions = $transactions->orderBy('created_at', 'desc')->paginate(10);
+
+    return view('admin.admin-laporan-transaksi', compact('transactions'));
+}
 
     public function print()
 {

@@ -21,7 +21,7 @@ Route::middleware([Admin::class])->group(function (): void {
     Route::put('/admin-kamar/update/{id}', [KamarController::class, 'update'])->name('admin.kamar.update');
     Route::delete('/admin-kamar/delete/{id}', [KamarController::class, 'destroy'])->name('admin.kamardalam.destroy');
     Route::get('/admin-detail-transaksi/{id}/detail', [OrdersController::class, 'detail'])->name('detail.transaksi');
-    Route::get('/laporan-transaksi', [DashboardController::class, 'laporan'])->name('laporan.transaksi');
+    Route::get('/laporan-transaksi', [PemesananController::class, 'laporan'])->name('laporan.transaksi');
     Route::get('/admin-pemesanan', [PemesananController::class, 'create'])->name('admin.pemesanan');
     Route::post('/admin-transaksi-store', [PemesananController::class, 'store'])->name('admin.transaksi.store');
     Route::get('/admin-pembayaran/{kode_transaksi}', [PemesananController::class, 'pembayaran'])->name('admin.pembayaran');
