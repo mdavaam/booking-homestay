@@ -60,7 +60,7 @@
                                     @foreach ($transactions as $data)
                                         <tr>
                                             <td>{{ $data->id }}</td>
-                                            <td>{{ $data->user->name }}</td>
+                                            <td>{{ $data->nama_pemesan }}</td>
                                             <td><span class="badge bg-primary">{{ $data->kamar->nama_kamar }}</span>
                                             </td>
                                             <td>{{ $data->check_in }}</td>

@@ -48,7 +48,7 @@ class PemesananController extends Controller
     $transaksi = Transaksi::create([
         'id_user' => $user->id,
         'id_kamar' => $kamar->id,
-        'nama_pemesan' => $request->nama_pemesan,
+        'nama_pemesan' => $request->nama_pemesan ?? $user->name,
         'kode_transaksi' => $kode_transaksi,
         'total_harga' => $request->total_harga,
         'check_in' => $request->check_in,
@@ -78,7 +78,7 @@ class PemesananController extends Controller
                 'gross_amount' => $transaksi->total_harga,
             ],
             'customer_details' => [
-                'first_name' => $request->nama_pemesan,
+                'first_name' => $request->nama_pemesan ?? $user->name,
                 'email' => $request->email,
             ],
             'callbacks' => [
@@ -114,7 +114,7 @@ class PemesananController extends Controller
                 'gross_amount' => $transaksi->total_harga,
             ],
             'customer_details' => [
-                'first_name' => $transaksi->nama_pemesan,
+                'first_name' => $transaksi->nama_pemesan ,
             ],
         ];
 
